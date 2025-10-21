@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h2>Dsa  Array Operations</h2>
+    <input type="number" name="" id="uservalue" placeholder="enter  a number"/>
+    <br>
+    <!--Stack Operations-->
+    <button id="Stackpush">Push in Stack</button>
+    <button id="stackpop">Pop from Stack</button>
+
+    <!--Queue Operations-->
+    <button id="queueEnq">Enqueue in Queue</button>
+    <button id="queueDeq">Dequeue from Queue</button>
+
+    <!--Search & Sort Operations-->
+    <button id = "searchBtn">Search</button>
+    <button id = "sortAsc">Sort Ascending</button>
+    <button id = "sortDesc">Sort Descending</button>
+    <!--Reset-->
+    <button id = "resetBtn">Reset Array</button>
+    <div class = "output" id="result"></div>
+    <script>
+        let numbers = [10, 20, 30, 40, 50];
+        function updateRes(message = "") {
+            document.getElementById("result").innerHTML =
+                message + "<br> Current Array: [" + numbers.join(", ") + "]";
+             }
+        // Initial render
+        updateRes("Initial Array");
+        // Stack Operations
+        // Push
+        document.getElementById("Stackpush").addEventListener("click", () => {
+            let value = document.getElementById("uservalue").value;
+            if (value) {
+                numbers.push(value);
+                updateRes("Stack Push → " + value);
+            } else {
+                updateRes("Enter a number to Push");
+            }
+        });
+        //Pop
+        document.getElementById("stackpop").addEventListener("click", () => {
+            if (numbers.length > 0) {
+                let poppedValue = numbers.pop();
+                updateRes("Stack Pop → " + poppedValue);
+            } else {
+                updateRes("Stack is empty. Cannot Pop.");
+            }
+        });
+        // Queue Operations
+        // Enqueue
+        document.getElementById("queueEnq").addEventListener("click", () => {
+            let value = document.getElementById("uservalue").value;
+            if (value) {
+                numbers.push(value);
+                updateRes("Queue Enqueue → " + value);
+            } else {
+                updateRes("Enter a number to Enqueue");
+            }
+        });
+        // Dequeue
+        document.getElementById("queueDeq").addEventListener("click", () => {
+            if (numbers.length > 0) {
+                let dequeuedValue = numbers.shift();
+                updateRes("Queue Dequeue → " + dequeuedValue);
+                } else {
+                updateRes("Queue is empty. Cannot Dequeue.");
+                }
+        });
+        // Search Operation
+        document.getElementById("searchBtn").addEventListener("click", () => {
+            let value = document.getElementById("uservalue").value;
+            if (value) {
+                let index = numbers.indexOf(parseInt(value));
+                if (index !== -1) {
+                    updateRes("Value " + value + " found at index " + index);
+                    } else {
+                    updateRes("Value " + value + " not found in the array");
+                    }
+                    } else {
+                    updateRes("Enter a number to Search");
+                    }
+        });
+        // Sorting Operations
+        // sort Ascending
+        document.getElementById("sortAsc").addEventListener("click", () => {
+            numbers.sort((a, b) => a - b);
+            updateRes("Array sorted in Ascending order");
+            });
+        // sort Descending
+        document.getElementById("sortDesc").addEventListener("click", () => {
+            numbers.sort((a, b) => b - a);
+            updateRes("Array sorted in Descending order");
+            });
+        // Reset Array
+        document.getElementById("resetBtn").addEventListener("click", () => {
+            numbers = [10 , 20, 30, 40, 50];
+            updateRes("Array has been reset");
+            });        
+        
+    </script>
+</body>
+</html>
